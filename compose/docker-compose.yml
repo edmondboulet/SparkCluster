@@ -1,0 +1,18 @@
+version: '3.6'
+services:
+  master:
+    build: .
+    image: edmond/spark
+    container_name: master
+    ports:
+      - "8080:8080"
+      - "7077:7077" 
+      - "8888:8888" 
+      - "8081:8081"
+    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/master.conf"]
+#---------------------------------------
+  slave:
+    image: edmond/spark
+    depends_on:
+      - master
+    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/slave.conf"]
