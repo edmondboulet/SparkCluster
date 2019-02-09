@@ -29,6 +29,3 @@ COPY slave.conf /opt/conf/slave.conf
 EXPOSE 8080
 EXPOSE 8020
 EXPOSE 9000
-
-#default command: running an interactive spark shell in the local mode
-CMD ["/opt/spark/bin/pyspark", "--master", "local[*]"]
